@@ -5,10 +5,10 @@ import AnimatedText from "@/components/animated-text";
 
 const HeroSection = () => {
   const categories = [
-    { name: "Mod APKs", icon: Box, href: "#mod-apks", description: "Unlock premium features with modified APKs." },
-    { name: "Crack Games", icon: Gamepad2, href: "#crack-games", description: "Access the latest games without any cost." },
-    { name: "Crack Softwares", icon: KeyRound, href: "#crack-softwares", description: "Get full access to premium software." },
-    { name: "Free VPN Servers", icon: Shield, href: "#free-vpn-servers", description: "Protect your privacy with free VPN access." },
+    { name: "Mod APKs", icon: Box, href: "/mod-apks", description: "Unlock premium features with modified APKs." },
+    { name: "Crack Games", icon: Gamepad2, href: "/crack-games", description: "Access the latest games without any cost." },
+    { name: "Crack Softwares", icon: KeyRound, href: "/crack-softwares", description: "Get full access to premium software." },
+    { name: "Free VPN Servers", icon: Shield, href: "/free-vpn-servers", description: "Protect your privacy with free VPN access." },
   ];
 
   return (
