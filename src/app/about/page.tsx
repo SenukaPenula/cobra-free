@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Box, Download, Gamepad2, KeyRound, Shield, Star } from "lucide-react";
