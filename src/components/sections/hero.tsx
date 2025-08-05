@@ -21,7 +21,7 @@ const HeroSection = () => {
           <h1 className="text-7xl font-bold tracking-tight text-transparent sm:text-8xl md:text-9xl bg-clip-text bg-gradient-to-b from-neutral-50 to-neutral-400">
             Cobra
           </h1>
-          <p className="text-xl text-primary font-medium">
+          <p className="text-xl text-primary font-mono">
             <AnimatedText text="Piracy is meant to be free." delay={0.5} />
           </p>
         </div>

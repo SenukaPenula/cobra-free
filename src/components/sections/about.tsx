@@ -11,7 +11,7 @@ const AboutSection = () => {
           </p>
         </div>
         <div className="mt-8">
-          <p className="font-bold tracking-widest text-accent text-lg">// We don't host. We just link. //</p>
+          <p className="font-mono tracking-widest text-accent text-lg">// We don&apos;t host. We just link. //</p>
         </div>
       </div>
     </section>
