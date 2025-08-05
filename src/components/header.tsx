@@ -6,35 +6,34 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const Header = () => {
   const navLinks = [
-    { href: '/#home', label: 'Home' },
-    { href: '/#about', label: 'About' },
-    { href: '/#contact', label: 'Contact' },
+    { href: '/', label: 'HOME' },
+    { href: '/#about', label: 'ABOUT' },
+    { href: '/#contact', label: 'CONTACT' },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/20 bg-background/80 backdrop-blur-lg">
       <div className="container flex h-20 max-w-7xl items-center justify-between">
-        <Link href="/" className="flex items-center gap-3">
-          <CobraLogo className="h-10 w-10 text-primary" />
-          <span className="hidden text-2xl font-bold tracking-wider sm:inline-block">COBRA</span>
+        <Link href="/">
+          <CobraLogo />
         </Link>
-        <nav className="hidden items-center gap-8 text-lg md:flex">
+        <nav className="hidden items-center gap-8 text-sm font-medium tracking-wider md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="font-medium text-muted-foreground transition-colors hover:text-primary"
+              className="text-muted-foreground transition-colors hover:text-primary"
             >
               {link.label}
             </Link>
           ))}
         </nav>
-        <div className="hidden items-center gap-4 md:flex">
-          <Button asChild variant="ghost" size="lg">
-            <Link href="/login">Login</Link>
+        <div className="hidden items-center gap-2 md:flex">
+          <Button asChild variant="ghost">
+            <Link href="/login">LOGIN</Link>
           </Button>
-          <Button asChild size="lg" className="rounded-full font-bold transition-all hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)]">
-            <Link href="/signup">Sign Up</Link>
+          <Button asChild className="font-bold transition-all hover:shadow-[0_0_15px_hsl(var(--primary)/0.5)] bg-primary/90 hover:bg-primary text-primary-foreground">
+            <Link href="/signup">SIGN UP</Link>
           </Button>
         </div>
         <div className="md:hidden">
@@ -61,7 +60,7 @@ const Header = () => {
                    <Button asChild variant="ghost" size="lg">
                     <Link href="/login">Login</Link>
                   </Button>
-                  <Button asChild size="lg" className="rounded-full font-bold transition-all hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)]">
+                  <Button asChild size="lg" className="font-bold transition-all hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)]">
                     <Link href="/signup">Sign Up</Link>
                   </Button>
                 </div>
