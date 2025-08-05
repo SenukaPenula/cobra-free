@@ -7,8 +7,12 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 const Header = () => {
   const navLinks = [
     { href: '/', label: 'HOME' },
-    { href: '/#about', label: 'ABOUT' },
-    { href: '/#contact', label: 'CONTACT' },
+    { href: '/mod-apks', label: 'MOD APKS' },
+    { href: '/crack-games', label: 'CRACK GAMES' },
+    { href: '/crack-softwares', label: 'CRACK SOFTWARES' },
+    { href: '/free-vpn-servers', label: 'FREE VPN SERVERS' },
+    { href: '/about', label: 'ABOUT' },
+    { href: '/contact', label: 'CONTACT' },
   ];
 
   return (
@@ -17,7 +21,7 @@ const Header = () => {
         <Link href="/">
           <CobraLogo />
         </Link>
-        <nav className="hidden items-center gap-8 text-sm font-medium tracking-wider md:flex">
+        <nav className="hidden items-center gap-6 text-sm font-medium tracking-wider md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
