@@ -1,14 +1,14 @@
 import { Button } from "@/components/ui/button";
-import { Code, Gamepad2, Shield, Wrench } from "lucide-react";
+import { Box, Gamepad2, KeyRound, Shield } from "lucide-react";
 import Link from "next/link";
 import AnimatedText from "@/components/animated-text";
 
 const HeroSection = () => {
   const categories = [
-    { name: "Open Source Apps", icon: Code, href: "#", description: "Free, libre alternatives to popular software." },
-    { name: "Free Games", icon: Gamepad2, href: "#", description: "Discover the best free and open-source games." },
-    { name: "Development Tools", icon: Wrench, href: "#", description: "Essential tools for developers and creators." },
-    { name: "Security Tools", icon: Shield, href: "#", description: "Protect your privacy and security online." },
+    { name: "Mod APKs", icon: Box, href: "#", description: "Unlock premium features with modified APKs." },
+    { name: "Crack Games", icon: Gamepad2, href: "#", description: "Access the latest games without any cost." },
+    { name: "Crack Softwares", icon: KeyRound, href: "#", description: "Get full access to premium software." },
+    { name: "Free VPN Servers", icon: Shield, href: "#", description: "Protect your privacy with free VPN access." },
   ];
 
   return (
