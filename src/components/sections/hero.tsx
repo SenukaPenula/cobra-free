@@ -33,7 +33,7 @@ const HeroSection = () => {
               asChild
               size="lg"
               variant="outline"
-              className="group rounded-full border-primary/30 bg-background/60 py-8 text-lg backdrop-blur-sm transition-all hover:scale-105 hover:border-primary hover:bg-primary/10 hover:shadow-[0_0_25px_theme(colors.primary/0.7)]"
+              className="group rounded-full border-primary/30 bg-background/60 py-8 text-lg backdrop-blur-sm transition-all hover:scale-105 hover:border-primary hover:bg-primary/10 hover:shadow-[0_0_25px_hsl(var(--primary)/0.7)]"
             >
               <Link href={link.href} target="_blank" rel="noopener noreferrer" data-ai-hint={link.hint}>
                 <link.icon className="mr-4 h-7 w-7 text-primary transition-transform group-hover:scale-110" />

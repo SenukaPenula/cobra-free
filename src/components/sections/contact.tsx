@@ -30,19 +30,19 @@ const ContactSection = () => {
           </p>
         </div>
         <div className="flex flex-wrap justify-center gap-4">
-          <Button asChild size="lg" variant="outline" className="group rounded-full border-accent/30 bg-transparent px-8 py-6 text-lg transition-all hover:scale-105 hover:border-accent hover:bg-accent/10 hover:shadow-[0_0_25px_theme(colors.accent/0.7)]">
+          <Button asChild size="lg" variant="outline" className="group rounded-full border-accent/30 bg-transparent px-8 py-6 text-lg transition-all hover:scale-105 hover:border-accent hover:bg-accent/10 hover:shadow-[0_0_25px_hsl(var(--accent)/0.7)]">
             <a href="#" target="_blank" rel="noopener noreferrer">
               <DiscordIcon className="mr-3 h-6 w-6 text-accent" />
               Discord
             </a>
           </Button>
-          <Button asChild size="lg" variant="outline" className="group rounded-full border-accent/30 bg-transparent px-8 py-6 text-lg transition-all hover:scale-105 hover:border-accent hover:bg-accent/10 hover:shadow-[0_0_25px_theme(colors.accent/0.7)]">
+          <Button asChild size="lg" variant="outline" className="group rounded-full border-accent/30 bg-transparent px-8 py-6 text-lg transition-all hover:scale-105 hover:border-accent hover:bg-accent/10 hover:shadow-[0_0_25px_hsl(var(--accent)/0.7)]">
             <a href="#" target="_blank" rel="noopener noreferrer">
               <TelegramIcon className="mr-3 h-6 w-6 text-accent" />
               Telegram
             </a>
           </Button>
-          <Button asChild size="lg" variant="outline" className="group rounded-full border-accent/30 bg-transparent px-8 py-6 text-lg transition-all hover:scale-105 hover:border-accent hover:bg-accent/10 hover:shadow-[0_0_25px_theme(colors.accent/0.7)]">
+          <Button asChild size="lg" variant="outline" className="group rounded-full border-accent/30 bg-transparent px-8 py-6 text-lg transition-all hover:scale-105 hover:border-accent hover:bg-accent/10 hover:shadow-[0_0_25px_hsl(var(--accent)/0.7)]">
             <a href="mailto:contact@cobra.dev">
               <Mail className="mr-3 h-6 w-6 text-accent" />
               Email
