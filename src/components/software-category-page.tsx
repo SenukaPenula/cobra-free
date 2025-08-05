@@ -6,6 +6,15 @@ import { Download, Star } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { softwareList } from "@/lib/software-list";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 interface SoftwareCategoryPageProps {
   category: string;
@@ -36,16 +45,13 @@ const SoftwareCategoryPage = ({ category }: SoftwareCategoryPageProps) => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5 }}
-          className="text-center space-y-3 mb-12"
+          className="text-left space-y-3 mb-12"
         >
           <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
             {section.category}
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {section.description}
-          </p>
         </motion.div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {section.items.map((item, itemIndex) => (
             <motion.div
               key={item.name}
@@ -77,6 +83,32 @@ const SoftwareCategoryPage = ({ category }: SoftwareCategoryPageProps) => {
               </Button>
             </motion.div>
           ))}
+        </div>
+        <div className="mt-16">
+            <Pagination>
+                <PaginationContent>
+                    <PaginationItem>
+                    <PaginationPrevious href="#" />
+                    </PaginationItem>
+                    <PaginationItem>
+                    <PaginationLink href="#">1</PaginationLink>
+                    </PaginationItem>
+                    <PaginationItem>
+                    <PaginationLink href="#" isActive>
+                        2
+                    </PaginationLink>
+                    </PaginationItem>
+                    <PaginationItem>
+                    <PaginationLink href="#">3</PaginationLink>
+                    </PaginationItem>
+                    <PaginationItem>
+                    <PaginationEllipsis />
+                    </PaginationItem>
+                    <PaginationItem>
+                    <PaginationNext href="#" />
+                    </PaginationItem>
+                </PaginationContent>
+            </Pagination>
         </div>
       </div>
     </section>
