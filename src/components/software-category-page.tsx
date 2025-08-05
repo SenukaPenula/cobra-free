@@ -62,46 +62,38 @@ const SoftwareCategoryPage = ({ category, currentPage = 1 }: SoftwareCategoryPag
 
   const renderPaginationLinks = () => {
     const pageLinks = [];
-    // Always show first page
+    
+    // Previous button
     pageLinks.push(
-        <PaginationItem key={1}>
-            <PaginationLink href={baseHref} isActive={currentPage === 1}>
-                1
-            </PaginationLink>
-        </PaginationItem>
+      <PaginationItem key="prev">
+        <PaginationPrevious 
+          href={currentPage > 1 ? (currentPage === 2 ? baseHref : `${baseHref}/${currentPage - 1}`) : '#'} 
+          className={currentPage === 1 ? "pointer-events-none opacity-50" : ""}
+        />
+      </PaginationItem>
     );
 
-    if (currentPage > 3) {
-        pageLinks.push(<PaginationItem key="start-ellipsis"><PaginationEllipsis /></PaginationItem>);
-    }
-
-    let startPage = Math.max(2, currentPage - 2);
-    let endPage = Math.min(totalPages - 1, currentPage + 2);
-
-    for (let i = startPage; i <= endPage; i++) {
+    // Page number links
+    for (let i = 1; i <= totalPages; i++) {
         pageLinks.push(
             <PaginationItem key={i}>
-                <PaginationLink href={`${baseHref}/${i}`} isActive={currentPage === i}>
+                <PaginationLink href={i === 1 ? baseHref : `${baseHref}/${i}`} isActive={currentPage === i}>
                     {i}
                 </PaginationLink>
             </PaginationItem>
         );
     }
+    
+    // Next button
+    pageLinks.push(
+      <PaginationItem key="next">
+        <PaginationNext 
+          href={currentPage < totalPages ? `${baseHref}/${currentPage + 1}` : '#'}
+          className={currentPage === totalPages ? "pointer-events-none opacity-50" : ""}
+        />
+      </PaginationItem>
+    );
 
-    if (currentPage < totalPages - 3) {
-        pageLinks.push(<PaginationItem key="end-ellipsis"><PaginationEllipsis /></PaginationItem>);
-    }
-
-    // Always show last page if more than 1 page
-    if (totalPages > 1) {
-        pageLinks.push(
-            <PaginationItem key={totalPages}>
-                <PaginationLink href={`${baseHref}/${totalPages}`} isActive={currentPage === totalPages}>
-                    {totalPages}
-                </PaginationLink>
-            </PaginationItem>
-        );
-    }
     return pageLinks;
 };
 
@@ -159,13 +151,7 @@ const SoftwareCategoryPage = ({ category, currentPage = 1 }: SoftwareCategoryPag
           <div className="mt-16">
               <Pagination>
                   <PaginationContent>
-                      <PaginationItem>
-                          <PaginationPrevious href={currentPage > 1 ? `${baseHref}${currentPage === 2 ? '' : `/${currentPage - 1}`}` : '#'} />
-                      </PaginationItem>
                       {renderPaginationLinks()}
-                      <PaginationItem>
-                          <PaginationNext href={currentPage < totalPages ? `${baseHref}/${currentPage + 1}` : '#'} />
-                      </PaginationItem>
                   </PaginationContent>
               </Pagination>
           </div>
