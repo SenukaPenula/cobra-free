@@ -22,14 +22,14 @@ import { useToast } from "@/hooks/use-toast";
 
 interface SoftwareCategoryPageProps {
   category: string;
+  currentPage?: number;
 }
 
 const ITEMS_PER_PAGE = 6;
 
-const SoftwareCategoryPage = ({ category }: SoftwareCategoryPageProps) => {
+const SoftwareCategoryPage = ({ category, currentPage = 1 }: SoftwareCategoryPageProps) => {
   const { toast } = useToast();
   const section = softwareList.find((s) => s.category === category);
-  const [currentPage, setCurrentPage] = useState(1);
 
   const handleDownloadClick = (itemName: string) => {
     toast({
@@ -58,18 +58,14 @@ const SoftwareCategoryPage = ({ category }: SoftwareCategoryPageProps) => {
   const endIndex = startIndex + ITEMS_PER_PAGE;
   const currentItems = section.items.slice(startIndex, endIndex);
 
-  const handlePageChange = (page: number) => {
-    if (page >= 1 && page <= totalPages) {
-      setCurrentPage(page);
-    }
-  };
+  const baseHref = `/${section.category.toLowerCase().replace(/\s+/g, '-')}`;
 
   const renderPaginationLinks = () => {
     const pageLinks = [];
     // Always show first page
     pageLinks.push(
         <PaginationItem key={1}>
-            <PaginationLink href="#" isActive={currentPage === 1} onClick={(e) => { e.preventDefault(); handlePageChange(1);}}>
+            <PaginationLink href={baseHref} isActive={currentPage === 1}>
                 1
             </PaginationLink>
         </PaginationItem>
@@ -79,27 +75,20 @@ const SoftwareCategoryPage = ({ category }: SoftwareCategoryPageProps) => {
         pageLinks.push(<PaginationItem key="start-ellipsis"><PaginationEllipsis /></PaginationItem>);
     }
 
-    let startPage = Math.max(2, currentPage - 1);
-    let endPage = Math.min(totalPages - 1, currentPage + 1);
-    
-    if (currentPage === 1 && totalPages > 1) {
-      endPage = Math.min(totalPages - 1, 3);
-    }
-    if (currentPage === totalPages && totalPages > 2) {
-      startPage = Math.max(2, totalPages - 2);
-    }
+    let startPage = Math.max(2, currentPage - 2);
+    let endPage = Math.min(totalPages - 1, currentPage + 2);
 
     for (let i = startPage; i <= endPage; i++) {
         pageLinks.push(
             <PaginationItem key={i}>
-                <PaginationLink href="#" isActive={currentPage === i} onClick={(e) => { e.preventDefault(); handlePageChange(i); }}>
+                <PaginationLink href={`${baseHref}/${i}`} isActive={currentPage === i}>
                     {i}
                 </PaginationLink>
             </PaginationItem>
         );
     }
 
-    if (currentPage < totalPages - 2) {
+    if (currentPage < totalPages - 3) {
         pageLinks.push(<PaginationItem key="end-ellipsis"><PaginationEllipsis /></PaginationItem>);
     }
 
@@ -107,7 +96,7 @@ const SoftwareCategoryPage = ({ category }: SoftwareCategoryPageProps) => {
     if (totalPages > 1) {
         pageLinks.push(
             <PaginationItem key={totalPages}>
-                <PaginationLink href="#" isActive={currentPage === totalPages} onClick={(e) => { e.preventDefault(); handlePageChange(totalPages); }}>
+                <PaginationLink href={`${baseHref}/${totalPages}`} isActive={currentPage === totalPages}>
                     {totalPages}
                 </PaginationLink>
             </PaginationItem>
@@ -171,11 +160,11 @@ const SoftwareCategoryPage = ({ category }: SoftwareCategoryPageProps) => {
               <Pagination>
                   <PaginationContent>
                       <PaginationItem>
-                          <PaginationPrevious href="#" onClick={(e) => { e.preventDefault(); handlePageChange(currentPage - 1); }} />
+                          <PaginationPrevious href={currentPage > 1 ? `${baseHref}${currentPage === 2 ? '' : `/${currentPage - 1}`}` : '#'} />
                       </PaginationItem>
                       {renderPaginationLinks()}
                       <PaginationItem>
-                          <PaginationNext href="#" onClick={(e) => { e.preventDefault(); handlePageChange(currentPage + 1); }} />
+                          <PaginationNext href={currentPage < totalPages ? `${baseHref}/${currentPage + 1}` : '#'} />
                       </PaginationItem>
                   </PaginationContent>
               </Pagination>
