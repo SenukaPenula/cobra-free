@@ -1,10 +1,16 @@
+"use client";
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import CobraLogo from '@/components/cobra-logo';
 import { Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 
 const Header = () => {
+  const pathname = usePathname();
   const navLinks = [
     { href: '/', label: 'HOME' },
     { href: '/mod-apks', label: 'MOD APKS' },
@@ -21,14 +27,24 @@ const Header = () => {
         <Link href="/">
           <CobraLogo />
         </Link>
-        <nav className="hidden items-center gap-6 text-sm font-medium tracking-wider md:flex">
+        <nav className="hidden items-center gap-8 text-sm font-medium tracking-wider md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-muted-foreground transition-colors hover:text-primary"
+              className={cn(
+                "relative text-muted-foreground transition-colors hover:text-primary",
+                pathname === link.href && "text-primary"
+              )}
             >
               {link.label}
+              {pathname === link.href && (
+                <motion.div 
+                  className="absolute bottom-[-6px] left-0 right-0 h-[2px] bg-primary"
+                  layoutId="underline"
+                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                />
+              )}
             </Link>
           ))}
         </nav>
@@ -54,7 +70,10 @@ const Header = () => {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className="font-medium text-muted-foreground transition-colors hover:text-primary"
+                      className={cn(
+                        "font-medium text-muted-foreground transition-colors hover:text-primary",
+                         pathname === link.href && "text-primary"
+                      )}
                     >
                       {link.label}
                     </Link>
