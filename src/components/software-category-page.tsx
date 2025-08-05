@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -15,13 +16,23 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { useToast } from "@/hooks/use-toast";
+
 
 interface SoftwareCategoryPageProps {
   category: string;
 }
 
 const SoftwareCategoryPage = ({ category }: SoftwareCategoryPageProps) => {
+  const { toast } = useToast();
   const section = softwareList.find((s) => s.category === category);
+
+  const handleDownloadClick = (itemName: string) => {
+    toast({
+      title: "Download Started",
+      description: `Your download of ${itemName} has begun.`,
+    });
+  };
 
   if (!section) {
     return (
@@ -76,10 +87,13 @@ const SoftwareCategoryPage = ({ category }: SoftwareCategoryPageProps) => {
                   </Badge>
                 ))}
               </div>
-              <Button asChild variant="ghost" className="w-full mt-6 bg-primary/10 hover:bg-primary/20 text-primary group transition-all">
-                <Link href="#" data-ai-hint={item.hint}>
+              <Button 
+                variant="ghost" 
+                className="w-full mt-6 bg-primary/10 hover:bg-primary/20 text-primary group transition-all"
+                onClick={() => handleDownloadClick(item.name)}
+                data-ai-hint={item.hint}
+              >
                   Download Now <Download className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
               </Button>
             </motion.div>
           ))}

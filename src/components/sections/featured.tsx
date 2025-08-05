@@ -7,10 +7,19 @@ import { Download, Star, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { softwareList } from "@/lib/software-list";
+import { useToast } from "@/hooks/use-toast";
 
 const FeaturedSection = () => {
+    const { toast } = useToast();
     // Get first item from each category
     const featuredItems = softwareList.map(category => category.items[0]);
+
+    const handleDownloadClick = (itemName: string) => {
+        toast({
+          title: "Download Started",
+          description: `Your download of ${itemName} has begun.`,
+        });
+    };
 
     return (
         <section id="featured" className="w-full py-20 md:py-28 lg:py-32 bg-background/50">
@@ -52,10 +61,13 @@ const FeaturedSection = () => {
                                     <Badge key={tag} variant="outline" className="border-primary/30 text-primary/80">{tag}</Badge>
                                 ))}
                             </div>
-                            <Button asChild variant="ghost" className="w-full mt-6 bg-primary/10 hover:bg-primary/20 text-primary group transition-all">
-                                <Link href="#" data-ai-hint={item.hint}>
-                                    Download Now <Download className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                                </Link>
+                            <Button 
+                                variant="ghost" 
+                                className="w-full mt-6 bg-primary/10 hover:bg-primary/20 text-primary group transition-all"
+                                onClick={() => handleDownloadClick(item.name)}
+                                data-ai-hint={item.hint}
+                            >
+                                Download Now <Download className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                             </Button>
                         </motion.div>
                     ))}
