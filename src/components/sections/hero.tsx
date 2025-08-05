@@ -38,6 +38,19 @@ const HeroSection = () => {
                 </Link>
             </Button>
         </div>
+        <div className="grid w-full max-w-4xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 mt-8">
+            {categories.map((category) => (
+                <Link
+                    key={category.name}
+                    href={category.href}
+                    className="group rounded-lg border border-primary/20 bg-secondary/30 p-4 text-left backdrop-blur-sm transition-all hover:scale-105 hover:border-primary hover:bg-primary/10 hover:shadow-[0_0_25px_hsl(var(--primary)/0.3)]"
+                >
+                    <category.icon className="mb-2 h-7 w-7 text-primary transition-transform group-hover:scale-110" />
+                    <h3 className="font-semibold text-primary/90">{category.name}</h3>
+                    <p className="text-xs text-muted-foreground mt-1">{category.description}</p>
+                </Link>
+            ))}
+        </div>
       </div>
     </section>
   );
