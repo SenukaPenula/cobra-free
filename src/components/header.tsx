@@ -3,14 +3,47 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import CobraLogo from '@/components/cobra-logo';
-import { Menu } from 'lucide-react';
+import { Menu, LogOut } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { useAuth } from '@/hooks/use-auth';
+import { logOut } from '@/services/auth';
+import { useToast } from '@/hooks/use-toast';
+import UserAvatar from './user-avatar';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Header = () => {
   const pathname = usePathname();
+  const { user, loading } = useAuth();
+  const { toast } = useToast();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      toast({
+        title: "Logged Out",
+        description: "You have been successfully logged out.",
+      });
+      router.push("/");
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: "Logout Failed",
+        description: error.message,
+      });
+    }
+  };
+
   const navLinks = [
     { href: '/', label: 'HOME' },
     { href: '/mod-apks', label: 'MOD APKS' },
@@ -49,12 +82,39 @@ const Header = () => {
           ))}
         </nav>
         <div className="hidden items-center gap-2 md:flex">
-          <Button asChild variant="ghost">
-            <Link href="/login">LOGIN</Link>
-          </Button>
-          <Button asChild className="font-bold transition-all hover:shadow-[0_0_15px_hsl(var(--primary)/0.5)] bg-primary/90 hover:bg-primary text-primary-foreground">
-            <Link href="/signup">SIGN UP</Link>
-          </Button>
+          {loading ? null : user ? (
+             <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+                  <UserAvatar user={user} />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56" align="end" forceMount>
+                <DropdownMenuLabel className="font-normal">
+                  <div className="flex flex-col space-y-1">
+                    <p className="text-sm font-medium leading-none">{user.displayName}</p>
+                    <p className="text-xs leading-none text-muted-foreground">
+                      {user.email}
+                    </p>
+                  </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={handleLogout}>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Log out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <>
+              <Button asChild variant="ghost">
+                <Link href="/login">LOGIN</Link>
+              </Button>
+              <Button asChild className="font-bold transition-all hover:shadow-[0_0_15px_hsl(var(--primary)/0.5)] bg-primary/90 hover:bg-primary text-primary-foreground">
+                <Link href="/signup">SIGN UP</Link>
+              </Button>
+            </>
+          )}
         </div>
         <div className="md:hidden">
           <Sheet>
@@ -80,12 +140,18 @@ const Header = () => {
                   ))}
                 </nav>
                 <div className="flex flex-col gap-4">
-                   <Button asChild variant="ghost" size="lg">
-                    <Link href="/login">Login</Link>
-                  </Button>
-                  <Button asChild size="lg" className="font-bold transition-all hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)]">
-                    <Link href="/signup">Sign Up</Link>
-                  </Button>
+                  {loading ? null : user ? (
+                    <Button onClick={handleLogout} size="lg">Log Out</Button>
+                  ) : (
+                    <>
+                      <Button asChild variant="ghost" size="lg">
+                        <Link href="/login">Login</Link>
+                      </Button>
+                      <Button asChild size="lg" className="font-bold transition-all hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)]">
+                        <Link href="/signup">Sign Up</Link>
+                      </Button>
+                    </>
+                  )}
                 </div>
               </div>
             </SheetContent>
