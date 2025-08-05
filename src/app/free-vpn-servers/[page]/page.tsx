@@ -1,4 +1,4 @@
-import SoftwareCategoryPage from "@/components/software-category-page";
+import VpnCategoryPage from "@/components/vpn-category-page";
 import { softwareList } from "@/lib/software-list";
 
 export async function generateStaticParams() {
@@ -13,5 +13,5 @@ export async function generateStaticParams() {
 
 export default function FreeVpnServersPaginatedPage({ params }: { params: { page: string } }) {
   const page = parseInt(params.page, 10);
-  return <SoftwareCategoryPage category="Free VPN Servers" currentPage={page} />;
+  return <VpnCategoryPage category="Free VPN Servers" currentPage={page} />;
 }

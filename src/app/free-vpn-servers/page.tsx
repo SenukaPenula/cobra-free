@@ -1,5 +1,5 @@
-import SoftwareCategoryPage from "@/components/software-category-page";
+import VpnCategoryPage from "@/components/vpn-category-page";
 
 export default function FreeVpnServersPage() {
-  return <SoftwareCategoryPage category="Free VPN Servers" currentPage={1} />;
+  return <VpnCategoryPage category="Free VPN Servers" currentPage={1} />;
 }
