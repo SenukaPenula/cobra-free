@@ -58,7 +58,7 @@ const SoftwareSection = () => {
         <section id="software" className="w-full py-20 md:py-28 lg:py-32 bg-background">
             <div className="container max-w-7xl mx-auto px-4 md:px-6">
                 {softwareList.map((section, sectionIndex) => (
-                    <div key={section.category} className="mb-20">
+                    <div key={section.category} id={section.category.toLowerCase().replace(/\s+/g, '-')} className="mb-20 scroll-mt-20">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
