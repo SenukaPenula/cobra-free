@@ -11,10 +11,9 @@ const CobraLogo = ({ className }: { className?: string }) => {
       strokeLinejoin="round"
       className={cn("animate-pulse-glow", className)}
     >
-      <path d="M12 11.5c-2 0-4-1-4-3.5C8 5.48 9.52 3 12 3s4 2.48 4 5.5c0 2.5-2 3.5-4 3.5z"/>
-      <path d="M12 21c-3.87 0-7-2.9-7-6.5C5 9.92 8.13 7 12 7s7 2.92 7 7.5C19 18.1 15.87 21 12 21z"/>
-      <path d="M10 12a1 1 0 100 2 1 1 0 000-2z" fill="currentColor"/>
-      <path d="M14 12a1 1 0 100 2 1 1 0 000-2z" fill="currentColor"/>
+      <path d="M13 5.366a2 2 0 0 0-2 0l-7 4.043a2 2 0 0 0-1 1.732V17a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5.859a2 2 0 0 0-1-1.732l-7-4.043z" />
+      <path d="M12 14.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+      <path d="M8 17h8" />
     </svg>
   );
 };
