@@ -2,53 +2,53 @@
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Code, Download, Gamepad2, Shield, Star, Wrench } from "lucide-react";
+import { ArrowRight, Box, Download, Gamepad2, KeyRound, Shield, Star } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
 const softwareList = [
     {
-        category: "Open Source Apps",
-        icon: Code,
-        description: "Discover the best free and open-source software alternatives.",
+        category: "Mod APKs",
+        icon: Box,
+        description: "Unlock premium features with our collection of modified APKs.",
         items: [
-            { name: "VS Code", description: "Code editor redefined and optimized for building and debugging modern web and cloud applications.", tags: ["OSS", "Free"], rating: 4.8, hint: "code editor" },
-            { name: "GIMP", description: "A cross-platform image editor available for GNU/Linux, macOS, Windows and more operating systems.", tags: ["OSS", "Free"], rating: 4.5, hint: "image editor" },
-            { name: "LibreOffice", description: "Powerful office suite that's a successor to OpenOffice.org and a great alternative to Microsoft 365.", tags: ["OSS", "Free"], rating: 4.4, hint: "office suite" },
-            { name: "Blender", description: "Free and open-source 3D creation suite. It supports the entirety of the 3D pipeline.", tags: ["OSS", "Free"], rating: 4.9, hint: "3d model" },
+            { name: "Spotify Premium", description: "Enjoy ad-free music, offline playback, and unlimited skips with this modded version.", tags: ["Mod", "Free"], rating: 4.9, hint: "modded music app" },
+            { name: "Netflix Premium", description: "Stream your favorite shows and movies in high definition without a subscription.", tags: ["Mod", "Free"], rating: 4.8, hint: "modded streaming app" },
+            { name: "AdGuard Premium", description: "Block ads everywhere on your device, including in apps and browsers, with this powerful tool.", tags: ["Mod", "Free"], rating: 4.7, hint: "ad blocker" },
+            { name: "Poweramp Full Version", description: "Unlock all features of the powerful Poweramp music player for free.", tags: ["Mod", "Free"], rating: 4.9, hint: "modded music player" },
         ]
     },
     {
-        category: "Free Games",
+        category: "Crack Games",
         icon: Gamepad2,
-        description: "Discover the best free and open-source games and platforms.",
+        description: "Access the latest and greatest games without any cost.",
         items: [
-            { name: "Steam Free Games", description: "Hundreds of free-to-play games are available on Steam, from team shooters to strategy.", tags: ["Free"], rating: 4.7, hint: "game store" },
-            { name: "Epic Games Store", description: "Offers a free game every week, plus many more free-to-play titles to discover and enjoy.", tags: ["Free"], rating: 4.6, hint: "game platform" },
-            { name: "itch.io", description: "An open marketplace for independent digital creators with a focus on independent video games.", tags: ["Indie", "Free"], rating: 4.8, hint: "indie games" },
-            { name: "Game Jolt", description: "A large community for gamers and developers alike, with thousands of free indie games.", tags: ["Indie", "Free"], rating: 4.5, hint: "gaming community" },
+            { name: "Cyberpunk 2077", description: "Explore the vast open world of Night City in this acclaimed action RPG, fully unlocked.", tags: ["Crack", "AAA"], rating: 4.8, hint: "open world rpg" },
+            { name: "Elden Ring", description: "Embark on an epic journey through the Lands Between. The complete experience, cracked and ready.", tags: ["Crack", "RPG"], rating: 5.0, hint: "action rpg" },
+            { name: "Red Dead Redemption 2", description: "Live the outlaw life in the final days of the Wild West. Full story and content available.", tags: ["Crack", "AAA"], rating: 4.9, hint: "western adventure" },
+            { name: "Hogwarts Legacy", description: "Experience the wizarding world like never before. The full game, unlocked for you.", tags: ["Crack", "RPG"], rating: 4.7, hint: "fantasy game" },
         ]
     },
     {
-        category: "Development Tools",
-        icon: Wrench,
-        description: "Essential open-source tools for developers and creators.",
+        category: "Crack Softwares",
+        icon: KeyRound,
+        description: "Get full access to premium software without the price tag.",
         items: [
-            { name: "Git", description: "A free and open source distributed version control system designed to handle everything from small to very large projects.", tags: ["OSS", "Free"], rating: 4.9, hint: "version control" },
-            { name: "Node.js", description: "An open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine.", tags: ["OSS", "Free"], rating: 4.8, hint: "javascript runtime" },
-            { name: "Docker", description: "A set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.", tags: ["OSS", "Free"], rating: 4.7, hint: "containerization platform" },
-            { name: "Postman", description: "An API platform for building and using APIs. Postman simplifies each step of the API lifecycle and streamlines collaboration.", tags: ["Freemium"], rating: 4.6, hint: "api client" },
+            { name: "Adobe Photoshop 2024", description: "The world's best imaging and graphic design software. Full version, fully activated.", tags: ["Crack", "Design"], rating: 4.9, hint: "photo editing software" },
+            { name: "Microsoft Office 365", description: "Get Word, Excel, PowerPoint, and more. A complete suite for all your productivity needs.", tags: ["Crack", "Productivity"], rating: 4.8, hint: "office suite" },
+            { name: "FL Studio Producer Edition", description: "Produce professional-quality music with one of the world's most popular DAWs.", tags: ["Crack", "Music"], rating: 4.7, hint: "music production software" },
+            { name: "Autodesk AutoCAD 2024", description: "Design and draft anything with this leading CAD software. Full version unlocked.", tags: ["Crack", "CAD"], rating: 4.8, hint: "3d design software" },
         ]
     },
     {
-        category: "Security Tools",
+        category: "Free VPN Servers",
         icon: Shield,
-        description: "Protect your privacy and security online with these tools.",
+        description: "Protect your privacy and bypass censorship with free VPN access.",
         items: [
-            { name: "Tor Browser", description: "Protect your privacy. Defend yourself against tracking and surveillance. Circumvent censorship.", tags: ["OSS", "Free"], rating: 4.8, hint: "secure browser" },
-            { name: "ProtonVPN", description: "High-speed Swiss VPN that safeguards your privacy. Strong no-logs policy and advanced security features.", tags: ["Freemium"], rating: 4.7, hint: "vpn service" },
-            { name: "Bitwarden", description: "Open source password manager that makes it easy to generate, store, and secure unique passwords.", tags: ["OSS", "Freemium"], rating: 4.9, hint: "password manager" },
-            { name: "ClamAV", description: "An open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.", tags: ["OSS", "Free"], rating: 4.4, hint: "antivirus engine" },
+            { name: "ProtonVPN", description: "High-speed Swiss VPN that safeguards your privacy. Connect to free servers worldwide.", tags: ["VPN", "Free"], rating: 4.7, hint: "secure vpn" },
+            { name: "Windscribe", description: "A VPN and ad blocker in one. Generous free plan with multiple server locations.", tags: ["VPN", "Free"], rating: 4.6, hint: "vpn adblocker" },
+            { name: "TunnelBear", description: "A user-friendly VPN that makes it easy to browse privately and securely.", tags: ["VPN", "Free"], rating: 4.5, hint: "easy vpn" },
+            { name: "Hotspot Shield", description: "Access blocked content and keep your connection secure with their free VPN plan.", tags: ["VPN", "Free"], rating: 4.4, hint: "free vpn service" },
         ]
     },
 ];
