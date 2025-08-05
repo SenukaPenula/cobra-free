@@ -13,7 +13,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section id="home" className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-grid-small-white/[0.05]">
+    <section id="home" className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-grid-small">
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_10%,black)]"></div>
       <div className="container z-10 flex flex-col items-center justify-center gap-10 text-center">
         <div className="flex flex-col items-center gap-4">

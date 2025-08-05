@@ -13,7 +13,7 @@ import Link from "next/link";
 
 export default function SignupPage() {
   return (
-    <div className="flex min-h-[calc(100dvh-8rem)] items-center justify-center p-4 bg-grid-small-white/[0.05]">
+    <div className="flex min-h-[calc(100dvh-8rem)] items-center justify-center p-4 relative bg-grid-small">
        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_10%,black)]"></div>
       <Card className="w-full max-w-md border-primary/30 shadow-xl shadow-primary/10 rounded-2xl bg-background/80 backdrop-blur-sm z-10">
         <CardHeader className="text-center">
