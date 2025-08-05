@@ -27,21 +27,21 @@ const Header = () => {
         <Link href="/">
           <CobraLogo />
         </Link>
-        <nav className="hidden items-center gap-8 text-sm font-medium tracking-wider md:flex">
+        <nav className="hidden items-center gap-2 text-sm font-medium tracking-wider md:flex bg-secondary/30 p-2 rounded-full border border-border/30">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={cn(
-                "relative text-muted-foreground transition-colors hover:text-primary",
+                "relative px-4 py-2 rounded-full text-muted-foreground transition-colors hover:text-primary",
                 pathname === link.href && "text-primary"
               )}
             >
               {link.label}
               {pathname === link.href && (
                 <motion.div 
-                  className="absolute bottom-[-6px] left-0 right-0 h-[2px] bg-primary"
-                  layoutId="underline"
+                  className="absolute inset-0 bg-primary/10 rounded-full z-[-1]"
+                  layoutId="active-nav-link"
                   transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                 />
               )}
