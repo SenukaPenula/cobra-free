@@ -1,6 +1,7 @@
 
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Download, Star } from "lucide-react";
@@ -23,9 +24,12 @@ interface SoftwareCategoryPageProps {
   category: string;
 }
 
+const ITEMS_PER_PAGE = 6;
+
 const SoftwareCategoryPage = ({ category }: SoftwareCategoryPageProps) => {
   const { toast } = useToast();
   const section = softwareList.find((s) => s.category === category);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleDownloadClick = (itemName: string) => {
     toast({
@@ -48,6 +52,70 @@ const SoftwareCategoryPage = ({ category }: SoftwareCategoryPageProps) => {
     );
   }
 
+  const totalItems = section.items.length;
+  const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const currentItems = section.items.slice(startIndex, endIndex);
+
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
+
+  const renderPaginationLinks = () => {
+    const pageLinks = [];
+    // Always show first page
+    pageLinks.push(
+        <PaginationItem key={1}>
+            <PaginationLink href="#" isActive={currentPage === 1} onClick={(e) => { e.preventDefault(); handlePageChange(1);}}>
+                1
+            </PaginationLink>
+        </PaginationItem>
+    );
+
+    if (currentPage > 3) {
+        pageLinks.push(<PaginationItem key="start-ellipsis"><PaginationEllipsis /></PaginationItem>);
+    }
+
+    let startPage = Math.max(2, currentPage - 1);
+    let endPage = Math.min(totalPages - 1, currentPage + 1);
+    
+    if (currentPage === 1 && totalPages > 1) {
+      endPage = Math.min(totalPages - 1, 3);
+    }
+    if (currentPage === totalPages && totalPages > 2) {
+      startPage = Math.max(2, totalPages - 2);
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+        pageLinks.push(
+            <PaginationItem key={i}>
+                <PaginationLink href="#" isActive={currentPage === i} onClick={(e) => { e.preventDefault(); handlePageChange(i); }}>
+                    {i}
+                </PaginationLink>
+            </PaginationItem>
+        );
+    }
+
+    if (currentPage < totalPages - 2) {
+        pageLinks.push(<PaginationItem key="end-ellipsis"><PaginationEllipsis /></PaginationItem>);
+    }
+
+    // Always show last page if more than 1 page
+    if (totalPages > 1) {
+        pageLinks.push(
+            <PaginationItem key={totalPages}>
+                <PaginationLink href="#" isActive={currentPage === totalPages} onClick={(e) => { e.preventDefault(); handlePageChange(totalPages); }}>
+                    {totalPages}
+                </PaginationLink>
+            </PaginationItem>
+        );
+    }
+    return pageLinks;
+};
+
   return (
     <section className="w-full py-20 md:py-28 lg:py-32 bg-background">
       <div className="container max-w-7xl mx-auto px-4 md:px-6">
@@ -63,7 +131,7 @@ const SoftwareCategoryPage = ({ category }: SoftwareCategoryPageProps) => {
           </h1>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {section.items.map((item, itemIndex) => (
+          {currentItems.map((item, itemIndex) => (
             <motion.div
               key={item.name}
               initial={{ opacity: 0, y: 20 }}
@@ -98,32 +166,21 @@ const SoftwareCategoryPage = ({ category }: SoftwareCategoryPageProps) => {
             </motion.div>
           ))}
         </div>
-        <div className="mt-16">
-            <Pagination>
-                <PaginationContent>
-                    <PaginationItem>
-                    <PaginationPrevious href="#" />
-                    </PaginationItem>
-                    <PaginationItem>
-                    <PaginationLink href="#">1</PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem>
-                    <PaginationLink href="#" isActive>
-                        2
-                    </PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem>
-                    <PaginationLink href="#">3</PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem>
-                    <PaginationEllipsis />
-                    </PaginationItem>
-                    <PaginationItem>
-                    <PaginationNext href="#" />
-                    </PaginationItem>
-                </PaginationContent>
-            </Pagination>
-        </div>
+         {totalPages > 1 && (
+          <div className="mt-16">
+              <Pagination>
+                  <PaginationContent>
+                      <PaginationItem>
+                          <PaginationPrevious href="#" onClick={(e) => { e.preventDefault(); handlePageChange(currentPage - 1); }} />
+                      </PaginationItem>
+                      {renderPaginationLinks()}
+                      <PaginationItem>
+                          <PaginationNext href="#" onClick={(e) => { e.preventDefault(); handlePageChange(currentPage + 1); }} />
+                      </PaginationItem>
+                  </PaginationContent>
+              </Pagination>
+          </div>
+        )}
       </div>
     </section>
   );
