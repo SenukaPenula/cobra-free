@@ -19,32 +19,32 @@ const TelegramIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="w-full py-16 md:py-24 lg:py-32">
-      <div className="container grid max-w-5xl items-center justify-center gap-8 px-4 text-center md:px-6">
-        <div className="space-y-3">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-accent">
+    <section id="contact" className="w-full py-20 md:py-28 lg:py-36">
+      <div className="container grid max-w-5xl items-center justify-center gap-10 px-4 text-center md:px-6">
+        <div className="space-y-4">
+          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-accent">
             Join the Rebellion
           </h2>
-          <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed">
+          <p className="mx-auto max-w-2xl text-muted-foreground text-lg md:text-xl">
             Connect with us on our channels. Share, discuss, and become part of the movement.
           </p>
         </div>
-        <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-          <Button asChild size="lg" variant="outline" className="group border-accent/20 bg-transparent text-base transition-all hover:scale-105 hover:border-accent hover:bg-accent/10 hover:shadow-[0_0_20px_theme(colors.accent)]">
+        <div className="flex flex-wrap justify-center gap-4">
+          <Button asChild size="lg" variant="outline" className="group rounded-full border-accent/30 bg-transparent px-8 py-6 text-lg transition-all hover:scale-105 hover:border-accent hover:bg-accent/10 hover:shadow-[0_0_25px_theme(colors.accent/0.7)]">
             <a href="#" target="_blank" rel="noopener noreferrer">
-              <DiscordIcon className="mr-2 h-5 w-5 text-accent" />
+              <DiscordIcon className="mr-3 h-6 w-6 text-accent" />
               Discord
             </a>
           </Button>
-          <Button asChild size="lg" variant="outline" className="group border-accent/20 bg-transparent text-base transition-all hover:scale-105 hover:border-accent hover:bg-accent/10 hover:shadow-[0_0_20px_theme(colors.accent)]">
+          <Button asChild size="lg" variant="outline" className="group rounded-full border-accent/30 bg-transparent px-8 py-6 text-lg transition-all hover:scale-105 hover:border-accent hover:bg-accent/10 hover:shadow-[0_0_25px_theme(colors.accent/0.7)]">
             <a href="#" target="_blank" rel="noopener noreferrer">
-              <TelegramIcon className="mr-2 h-5 w-5 text-accent" />
+              <TelegramIcon className="mr-3 h-6 w-6 text-accent" />
               Telegram
             </a>
           </Button>
-          <Button asChild size="lg" variant="outline" className="group border-accent/20 bg-transparent text-base transition-all hover:scale-105 hover:border-accent hover:bg-accent/10 hover:shadow-[0_0_20px_theme(colors.accent)]">
+          <Button asChild size="lg" variant="outline" className="group rounded-full border-accent/30 bg-transparent px-8 py-6 text-lg transition-all hover:scale-105 hover:border-accent hover:bg-accent/10 hover:shadow-[0_0_25px_theme(colors.accent/0.7)]">
             <a href="mailto:contact@cobra.dev">
-              <Mail className="mr-2 h-5 w-5 text-accent" />
+              <Mail className="mr-3 h-6 w-6 text-accent" />
               Email
             </a>
           </Button>
