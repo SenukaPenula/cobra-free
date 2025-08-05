@@ -1,8 +1,9 @@
+
 "use client";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Download, Copy } from "lucide-react";
+import { Download, Copy, Search } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { softwareList } from "@/lib/software-list";
@@ -15,6 +16,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { useToast } from "@/hooks/use-toast";
+import { Input } from "./ui/input";
 
 interface VpnCategoryPageProps {
   category: string;
@@ -25,6 +27,7 @@ const ITEMS_PER_PAGE = 9;
 
 const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) => {
   const { toast } = useToast();
+  const [searchQuery, setSearchQuery] = useState("");
   const section = softwareList.find((s) => s.category === category);
 
   const handleDownloadClick = (itemName: string) => {
@@ -56,11 +59,16 @@ const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) =>
     );
   }
 
-  const totalItems = section.items.length;
+  const filteredItems = section.items.filter(
+    (item) =>
+      item.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const totalItems = filteredItems.length;
   const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
-  const currentItems = section.items.slice(startIndex, endIndex);
+  const currentItems = filteredItems.slice(startIndex, endIndex);
 
   const baseHref = `/${section.category.toLowerCase().replace(/\s+/g, '-')}`;
 
@@ -116,6 +124,19 @@ const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) =>
           </h1>
           <p className="text-lg text-muted-foreground">Available packages for use</p>
         </motion.div>
+        
+        <div className="mb-12">
+            <div className="relative">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <Input
+                    placeholder={`Search in ${section.category}...`}
+                    className="w-full rounded-lg bg-secondary/30 border-primary/30 py-6 pl-12 pr-4 text-lg focus:border-primary"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                />
+            </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {currentItems.map((item, itemIndex) => (
             <motion.div
@@ -153,7 +174,14 @@ const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) =>
             </motion.div>
           ))}
         </div>
-         {totalPages > 1 && (
+        
+        {totalItems === 0 && (
+            <div className="text-center py-20">
+                <p className="text-muted-foreground text-lg">No items found matching your search.</p>
+            </div>
+        )}
+
+         {totalPages > 1 && totalItems > 0 && (
           <div className="mt-16">
               <Pagination>
                   <PaginationContent>
