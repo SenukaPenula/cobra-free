@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Download, Copy, Search } from "lucide-react";
+import { Copy, Search, CalendarClock } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { softwareList } from "@/lib/software-list";
@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/pagination";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "./ui/input";
+import { Badge } from "./ui/badge";
 
 interface VpnCategoryPageProps {
   category: string;
@@ -115,7 +116,13 @@ const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) =>
           <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
             {section.category}
           </h1>
-          <p className="text-lg text-muted-foreground">Available packages for use</p>
+          <div className="flex items-center gap-4">
+            <p className="text-lg text-muted-foreground">Available packages for use</p>
+            <Badge variant="outline" className="border-accent/50 text-accent text-base py-1 px-3 flex items-center gap-2">
+                <CalendarClock className="h-4 w-4" />
+                Expires on: 2025-08-10
+            </Badge>
+          </div>
         </motion.div>
         
         <div className="mb-12">
