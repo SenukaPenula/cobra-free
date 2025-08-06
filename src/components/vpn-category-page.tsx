@@ -30,13 +30,6 @@ const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) =>
   const [searchQuery, setSearchQuery] = useState("");
   const section = softwareList.find((s) => s.category === category);
 
-  const handleDownloadClick = (itemName: string) => {
-    toast({
-      title: "Download Started",
-      description: `Your download of ${itemName} has begun.`,
-    });
-  };
-
   const handleCopyClick = (textToCopy: string, itemName: string) => {
     navigator.clipboard.writeText(textToCopy);
     toast({
@@ -161,14 +154,6 @@ const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) =>
                   onClick={() => handleCopyClick(item.description, item.name)}
                 >
                     <Copy className="mr-2 h-4 w-4" /> Copy
-                </Button>
-                <Button 
-                  variant="ghost" 
-                  className="w-full mt-2 bg-primary/10 hover:bg-primary/20 text-primary group transition-all"
-                  onClick={() => handleDownloadClick(item.name)}
-                  data-ai-hint={item.hint}
-                >
-                    <Download className="mr-2 h-4 w-4" /> Download
                 </Button>
               </div>
             </motion.div>
