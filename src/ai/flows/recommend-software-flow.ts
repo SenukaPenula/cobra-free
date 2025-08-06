@@ -41,20 +41,20 @@ const softwareData = JSON.stringify(
   }))
 );
 
-const prompt = ai.definePrompt({
+const recommendSoftwarePrompt = ai.definePrompt({
   name: 'recommendSoftwarePrompt',
   input: { schema: z.string() },
   output: { schema: RecommendSoftwareOutputSchema },
   prompt: `You are an AI assistant for a software download website called Cobra. Your goal is to help users find the right software based on their needs.
 
-You have access to a list of available software. Analyze the user's request and recommend up to 4 relevant items from the list. For each recommendation, you MUST provide a short reason explaining why it's a good fit for the user's request.
+You have access to a list of available software. Analyze the user's request and recommend up to 4 relevant items from the list. For each recommendation, you MUST provide a short reason explaining why it's a good fit.
 
 Do not recommend software that is not in the provided list.
 
-Here is the list of available software:
+Available Software Data:
 ${softwareData}
 
-User's request: {{{prompt}}}
+User's need: {{{prompt}}}
 `,
 });
 
@@ -65,7 +65,7 @@ const recommendSoftwareFlow = ai.defineFlow(
     outputSchema: RecommendSoftwareOutputSchema,
   },
   async (promptText) => {
-    const { output } = await prompt(promptText);
+    const { output } = await recommendSoftwarePrompt(promptText);
     return output || [];
   }
 );
