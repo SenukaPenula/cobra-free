@@ -11,8 +11,11 @@ import { useToast } from "@/hooks/use-toast";
 
 const FeaturedSection = () => {
     const { toast } = useToast();
-    // Get first item from each category
-    const featuredItems = softwareList.map(category => category.items[0]).slice(0, 4); // Limit to 4 items for a cleaner look
+    // Get first item from each category, excluding VPNs
+    const featuredItems = softwareList
+        .filter(category => category.category !== "Free VPN Servers")
+        .map(category => category.items[0])
+        .slice(0, 3); // Limit to 3 items for a cleaner look
 
     const handleDownloadClick = (itemName: string) => {
         toast({
@@ -38,7 +41,7 @@ const FeaturedSection = () => {
                         A glimpse into our ever-expanding library of premium content.
                     </p>
                 </motion.div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {featuredItems.map((item, itemIndex) => (
                         <motion.div
                             key={item.name}
