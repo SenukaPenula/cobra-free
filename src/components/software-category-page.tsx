@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Download, Star, Search } from "lucide-react";
+import { Download, Star, Search, Send } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { softwareList } from "@/lib/software-list";
@@ -19,6 +19,10 @@ import {
 } from "@/components/ui/pagination";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
+import { useAuth } from "@/hooks/use-auth";
+import { Card, CardContent, CardFooter } from "./ui/card";
+import { Textarea } from "./ui/textarea";
+import { Label } from "./ui/label";
 
 
 interface SoftwareCategoryPageProps {
@@ -30,6 +34,7 @@ const ITEMS_PER_PAGE = 6;
 
 const SoftwareCategoryPage = ({ category, currentPage = 1 }: SoftwareCategoryPageProps) => {
   const { toast } = useToast();
+  const { user } = useAuth();
   const [searchQuery, setSearchQuery] = useState("");
   const section = softwareList.find((s) => s.category === category);
 
@@ -38,6 +43,15 @@ const SoftwareCategoryPage = ({ category, currentPage = 1 }: SoftwareCategoryPag
       title: "Download Started",
       description: `Your download of ${itemName} has begun.`,
     });
+  };
+
+  const handleReviewSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    toast({
+      title: "Review Submitted",
+      description: "Thank you for your feedback!",
+    });
+    // Reset form, etc.
   };
 
   if (!section) {
@@ -132,7 +146,7 @@ const SoftwareCategoryPage = ({ category, currentPage = 1 }: SoftwareCategoryPag
             </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {currentItems.map((item, itemIndex) => (
             <motion.div
               key={item.name}
@@ -168,7 +182,7 @@ const SoftwareCategoryPage = ({ category, currentPage = 1 }: SoftwareCategoryPag
             </motion.div>
           ))}
         </div>
-
+        
         {totalItems === 0 && (
             <div className="text-center py-20">
                 <p className="text-muted-foreground text-lg">No items found matching your search.</p>
@@ -184,6 +198,45 @@ const SoftwareCategoryPage = ({ category, currentPage = 1 }: SoftwareCategoryPag
               </Pagination>
           </div>
         )}
+
+        <div className="mt-24">
+            <h2 className="text-3xl font-bold tracking-tight text-primary text-center mb-12">Rate & Review</h2>
+            <Card className="max-w-2xl mx-auto border-primary/30 shadow-xl shadow-primary/10 rounded-2xl bg-background/80 backdrop-blur-sm z-10">
+                <CardContent className="p-6">
+                    {user ? (
+                        <form onSubmit={handleReviewSubmit}>
+                            <div className="grid gap-4">
+                                <div>
+                                    <Label htmlFor="rating" className="text-primary/80 mb-2 block">Your Rating</Label>
+                                    <div className="flex items-center gap-2">
+                                        {[1, 2, 3, 4, 5].map(star => (
+                                            <Star key={star} className="w-8 h-8 text-yellow-400 cursor-pointer" />
+                                        ))}
+                                    </div>
+                                </div>
+                                <div>
+                                    <Label htmlFor="review" className="text-primary/80">Your Review</Label>
+                                    <Textarea id="review" placeholder="Tell us what you think..." className="mt-2 bg-secondary/30 border-primary/30 focus:border-primary min-h-[100px]" />
+                                </div>
+                            </div>
+                            <CardFooter className="p-0 pt-6">
+                                <Button type="submit" className="w-full text-lg font-semibold transition-all hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)]">
+                                    Submit Review <Send className="ml-2 h-4 w-4" />
+                                </Button>
+                            </CardFooter>
+                        </form>
+                    ) : (
+                        <div className="text-center text-muted-foreground">
+                            <p>You must be logged in to leave a review.</p>
+                            <Button asChild variant="link" className="text-primary text-lg">
+                                <Link href="/login">Login to continue</Link>
+                            </Button>
+                        </div>
+                    )}
+                </CardContent>
+            </Card>
+        </div>
+
       </div>
     </section>
   );

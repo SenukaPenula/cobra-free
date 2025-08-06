@@ -12,7 +12,7 @@ import { useToast } from "@/hooks/use-toast";
 const FeaturedSection = () => {
     const { toast } = useToast();
     // Get first item from each category
-    const featuredItems = softwareList.map(category => category.items[0]);
+    const featuredItems = softwareList.map(category => category.items[0]).slice(0, 4); // Limit to 4 items for a cleaner look
 
     const handleDownloadClick = (itemName: string) => {
         toast({

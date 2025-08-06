@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import CobraLogo from '@/components/cobra-logo';
-import { Menu, LogOut } from 'lucide-react';
+import { Menu, LogOut, User as UserIcon, Bot } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { usePathname, useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
@@ -50,6 +50,7 @@ const Header = () => {
     { href: '/crack-games', label: 'CRACK GAMES' },
     { href: '/crack-softwares', label: 'CRACK SOFTWARES' },
     { href: '/free-vpn-servers', label: 'FREE VPN SERVERS' },
+    { href: '/assistant', label: 'ASSISTANT' },
     { href: '/about', label: 'ABOUT' },
     { href: '/contact', label: 'CONTACT' },
   ];
@@ -99,6 +100,10 @@ const Header = () => {
                   </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
+                 <DropdownMenuItem onClick={() => router.push('/profile')}>
+                  <UserIcon className="mr-2 h-4 w-4" />
+                  <span>Profile</span>
+                </DropdownMenuItem>
                 <DropdownMenuItem onClick={handleLogout}>
                   <LogOut className="mr-2 h-4 w-4" />
                   <span>Log out</span>
@@ -141,7 +146,10 @@ const Header = () => {
                 </nav>
                 <div className="flex flex-col gap-4">
                   {loading ? null : user ? (
-                    <Button onClick={handleLogout} size="lg">Log Out</Button>
+                    <>
+                     <Button onClick={() => router.push('/profile')} size="lg" variant="outline">Profile</Button>
+                     <Button onClick={handleLogout} size="lg">Log Out</Button>
+                    </>
                   ) : (
                     <>
                       <Button asChild variant="ghost" size="lg">
