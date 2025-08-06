@@ -6,6 +6,7 @@ import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { AuthProvider } from '@/hooks/use-auth';
+import Script from 'next/script';
 
 const shareTechMono = Share_Tech_Mono({
   subsets: ['latin'],
@@ -25,6 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
+      <head>
+      <script type='text/javascript' src='//pl27359669.profitableratecpm.com/4e/1a/14/4e1a1445dde2024cd87664dbcd15c9e4.js'></script>
+      </head>
       <body className={cn('min-h-screen bg-background text-foreground antialiased', shareTechMono.variable)}>
         <AuthProvider>
           <div className="relative flex min-h-dvh flex-col">
