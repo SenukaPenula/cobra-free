@@ -50,7 +50,6 @@ const Header = () => {
     { href: '/crack-games', label: 'CRACK GAMES' },
     { href: '/crack-softwares', label: 'CRACK SOFTWARES' },
     { href: '/free-vpn-servers', label: 'FREE VPN SERVERS' },
-    { href: '/assistant', label: 'ASSISTANT' },
     { href: '/about', label: 'ABOUT' },
     { href: '/contact', label: 'CONTACT' },
   ];
