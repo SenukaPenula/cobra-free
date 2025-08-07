@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { useState } from "react";
@@ -128,16 +129,15 @@ const SoftwareCategoryPage = ({ category, currentPage = 1 }: SoftwareCategoryPag
         </motion.div>
 
         <div className="mb-12">
-            <div className="relative font-mono bg-black border border-primary/20 p-4 flex items-center">
-                <span className="text-primary mr-2">&gt;</span>
-                <Input
-                    placeholder={`Search for files...`}
-                    className="bg-transparent border-none focus:ring-0 focus-visible:ring-offset-0 p-0 text-lg text-primary w-full placeholder:text-primary/50"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                 <span className="w-2 h-5 bg-primary animate-pulse ml-2"></span>
-            </div>
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-primary/50" />
+            <Input
+              placeholder={`Search for files...`}
+              className="w-full bg-background/50 border-2 border-primary/20 rounded-full py-6 pl-12 pr-4 text-lg text-primary placeholder:text-primary/50 focus:border-primary focus:ring-primary/20"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
