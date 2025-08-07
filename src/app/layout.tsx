@@ -27,7 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
-      <script type='text/javascript' src='//pl27359669.profitableratecpm.com/4e/1a/14/4e1a1445dde2024cd87664dbcd15c9e4.js'></script>
+        <Script
+          id="adsterra-popunder"
+          strategy="beforeInteractive"
+          src="//pl27359669.profitableratecpm.com/4e/1a/14/4e1a1445dde2024cd87664dbcd15c9e4.js"
+        />
       </head>
       <body className={cn('min-h-screen bg-background text-foreground antialiased', shareTechMono.variable)}>
         <AuthProvider>
@@ -38,7 +42,11 @@ export default function RootLayout({
           </div>
           <Toaster />
         </AuthProvider>
-        <script type='text/javascript' src='//pl27363287.profitableratecpm.com/37/e2/13/37e213e266590dc8719ae88b439cc738.js'></script>
+        <Script
+          id="adsterra-social-bar"
+          strategy="lazyOnload"
+          src="//pl27363287.profitableratecpm.com/37/e2/13/37e213e266590dc8719ae88b439cc738.js"
+        />
       </body>
     </html>
   );
