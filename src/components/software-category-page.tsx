@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Download, Star, Search, Send, XCircle } from "lucide-react";
+import { Download, Star, Search, Send, XCircle, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { softwareList } from "@/lib/software-list";
@@ -179,7 +179,7 @@ const SoftwareCategoryPage = ({ category, currentPage = 1 }: SoftwareCategoryPag
                         </Link>
                     ) : (
                        <span>
-                          Link not available <XCircle className="ml-2 h-4 w-4" />
+                          Coming Soon... <Clock className="ml-2 h-4 w-4" />
                        </span>
                     )}
                 </Button>
