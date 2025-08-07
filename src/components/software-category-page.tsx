@@ -133,7 +133,7 @@ const SoftwareCategoryPage = ({ category, currentPage = 1 }: SoftwareCategoryPag
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-primary/50" />
             <Input
               placeholder={`Search for files...`}
-              className="w-full bg-background/50 border-2 border-primary/20 rounded-full py-6 pl-12 pr-4 text-lg text-primary placeholder:text-primary/50 focus:border-primary focus:ring-primary/20"
+              className="w-full bg-background/50 border-2 border-primary/20 rounded-full py-6 pl-12 pr-4 text-lg text-primary placeholder:text-primary/50 transition-shadow focus:border-primary focus:ring-0 focus:shadow-[0_0_15px_hsl(var(--primary)/0.5)]"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
