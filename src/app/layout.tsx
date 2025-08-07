@@ -38,6 +38,7 @@ export default function RootLayout({
           </div>
           <Toaster />
         </AuthProvider>
+        <script type='text/javascript' src='//pl27363287.profitableratecpm.com/37/e2/13/37e213e266590dc8719ae88b439cc738.js'></script>
       </body>
     </html>
   );
