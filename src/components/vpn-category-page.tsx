@@ -126,14 +126,15 @@ const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) =>
         </motion.div>
         
         <div className="mb-12">
-            <div className="relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+           <div className="relative font-mono bg-black border border-primary/20 p-4 flex items-center">
+                <span className="text-primary mr-2">&gt;</span>
                 <Input
-                    placeholder={`Search in ${section.category}...`}
-                    className="w-full rounded-lg bg-secondary/30 border-primary/30 py-6 pl-12 pr-4 text-lg focus:border-primary"
+                    placeholder={`Search for servers...`}
+                    className="bg-transparent border-none focus:ring-0 focus-visible:ring-offset-0 p-0 text-lg text-primary w-full placeholder:text-primary/50"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
+                 <span className="w-2 h-5 bg-primary animate-pulse ml-2"></span>
             </div>
         </div>
 
