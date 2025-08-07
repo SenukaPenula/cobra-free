@@ -169,7 +169,7 @@ const SoftwareCategoryPage = ({ category, currentPage = 1 }: SoftwareCategoryPag
                 <Button
                   asChild={isLinkAvailable}
                   variant="ghost"
-                  className="w-full mt-6 bg-primary/10 hover:bg-primary/20 text-primary group transition-all disabled:bg-muted/20 disabled:text-muted-foreground disabled:cursor-not-allowed"
+                  className="w-full mt-6 bg-primary/10 hover:bg-primary/20 text-primary group transition-all disabled:bg-muted/20 disabled:text-accent disabled:cursor-not-allowed"
                   data-ai-hint={item.hint}
                   disabled={!isLinkAvailable}
                 >
