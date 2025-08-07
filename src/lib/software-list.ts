@@ -1,3 +1,4 @@
+
 import { Box, Gamepad2, KeyRound, Shield } from "lucide-react";
 
 export const softwareList = [
@@ -7,6 +8,11 @@ export const softwareList = [
         description: "Unlock premium features with our collection of modified APKs.",
         items: [
             { name: "Lightroom Photo & Video Editor", description: "Edit, organize, and share your photos with premium features unlocked.", tags: ["Mod", "Photography"], rating: 4.8, hint: "photo editor", link: "https://mega.nz/file/wAIxEKiL#L6zDuRNzGt4akQrPn3tUz3fJIKsP7-p5z8p1DVOdLPE" },
+            { name: "Spotify Premium", description: "Stream your favorite music ad-free and with offline playback.", tags: ["Mod", "Music"], rating: 4.9, hint: "music streaming", link: "https://mega.nz/file/hYQHXLYR#60SmuGtW1Uxf6E2ogFkQX5e-VECAwP2fIj5VvozmO6Y" },
+            { name: "CapCut Pro", description: "A versatile and easy-to-use video editor with premium features unlocked.", tags: ["Mod", "Video", "Editing"], rating: 4.8, hint: "video editor app", link: "https://mega.nz/file/YNIDwJiQ#Z5HnebSiOtfWOIkGaOiQsKsjWtCOEkyeAiWwk5L0tGc" },
+            { name: "Alight Motion Pro", description: "A professional motion graphics and video editing app for your smartphone.", tags: ["Mod", "Video", "Editing"], rating: 4.7, hint: "motion graphics app", link: "https://mega.nz/file/xYwUhb5I#qs9zd-fXO7Oe6CwxFgFR3hjkePuYRfbkdOyV24GPYl8" },
+            { name: "FilmoraGo Pro", description: "Edit videos with pro features and no watermarks on your mobile device.", tags: ["Mod", "Video", "Editing"], rating: 4.6, hint: "mobile video editor", link: "https://mega.nz/file/gJRCzYJT#e4ocnjLLFFvUlqoPpJ8jZH7a6dbG4isK3GrjbcnDTBo" },
+            { name: "TeraBox Premium", description: "Get massive cloud storage and high-speed downloads with premium unlocked.", tags: ["Mod", "Productivity", "Storage"], rating: 4.7, hint: "cloud storage", link: "https://mega.nz/file/sMgBxLQY#8mdHiK_blNeFSN2OS1IeAPDl2mZeMc-pOV7Iu1L7jFw" },
             { name: "Netflix Premium", description: "Stream your favorite shows and movies in high definition without a subscription.", tags: ["Mod", "Free"], rating: 4.8, hint: "modded streaming app", link: "#" },
             { name: "AdGuard Premium", description: "Block ads everywhere on your device, including in apps and browsers, with this powerful tool.", tags: ["Mod", "Free"], rating: 4.7, hint: "ad blocker", link: "#" },
             { name: "Poweramp Full Version", description: "Unlock all features of the powerful Poweramp music player for free.", tags: ["Mod", "Free"], rating: 4.9, hint: "modded music player", link: "#" },
