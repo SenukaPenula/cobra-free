@@ -149,7 +149,7 @@ const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) =>
             >
               <h3 className="text-lg font-bold text-primary/90 mb-4">{item.name}</h3>
               <div className="bg-background/50 border border-border/50 rounded-md p-3 mb-4 flex-grow">
-                <p className="text-muted-foreground text-xs break-all h-32 overflow-y-auto">
+                <p className="text-accent text-xs break-all h-32 overflow-y-auto">
                     {item.description}
                 </p>
               </div>
