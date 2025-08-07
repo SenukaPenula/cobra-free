@@ -7,7 +7,7 @@ export const softwareList = [
         icon: Box,
         description: "Unlock premium features with our collection of modified APKs.",
         items: [
-            { name: "Lightroom Photo & Video Editor", description: "Edit, organize, and share your photos with premium features unlocked.", tags: ["Mod", "Photography"], rating: 4.8, hint: "photo editor", link: "https://mega.nz/file/wAIxEKiL#L6zDuRNzGt4akQrPn3tUz3fJIKsP7-p5z8p1DVOdLPE" },
+            { name: "Lightroom Photo & Video Editor", description: "Edit, organize, and share your photos with this professional-grade photo editor. Premium features unlocked.", tags: ["Mod", "Photography"], rating: 4.8, hint: "photo editor", link: "https://mega.nz/file/wAIxEKiL#L6zDuRNzGt4akQrPn3tUz3fJIKsP7-p5z8p1DVOdLPE" },
             { name: "Spotify Premium", description: "Stream your favorite music ad-free and with offline playback.", tags: ["Mod", "Music"], rating: 4.9, hint: "music streaming", link: "https://mega.nz/file/hYQHXLYR#60SmuGtW1Uxf6E2ogFkQX5e-VECAwP2fIj5VvozmO6Y" },
             { name: "CapCut Pro", description: "A versatile and easy-to-use video editor with premium features unlocked.", tags: ["Mod", "Video", "Editing"], rating: 4.8, hint: "video editor app", link: "https://mega.nz/file/YNIDwJiQ#Z5HnebSiOtfWOIkGaOiQsKsjWtCOEkyeAiWwk5L0tGc" },
             { name: "Alight Motion Pro", description: "A professional motion graphics and video editing app for your smartphone.", tags: ["Mod", "Video", "Editing"], rating: 4.7, hint: "motion graphics app", link: "https://mega.nz/file/xYwUhb5I#qs9zd-fXO7Oe6CwxFgFR3hjkePuYRfbkdOyV24GPYl8" },
