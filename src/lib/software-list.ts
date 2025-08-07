@@ -6,7 +6,7 @@ export const softwareList = [
         icon: Box,
         description: "Unlock premium features with our collection of modified APKs.",
         items: [
-            { name: "Spotify Premium", description: "Enjoy ad-free music, offline playback, and unlimited skips with this modded version.", tags: ["Mod", "Free"], rating: 4.9, hint: "modded music app" },
+            { name: "Lightroom Photo & Video Editor", description: "Edit, organize, and share your photos with premium features unlocked. Download from MEGA: https://mega.nz/file/wAIxEKiL#L6zDuRNzGt4akQrPn3tUz3fJIKsP7-p5z8p1DVOdLPE", tags: ["Mod", "Photography"], rating: 4.8, hint: "photo editor" },
             { name: "Netflix Premium", description: "Stream your favorite shows and movies in high definition without a subscription.", tags: ["Mod", "Free"], rating: 4.8, hint: "modded streaming app" },
             { name: "AdGuard Premium", description: "Block ads everywhere on your device, including in apps and browsers, with this powerful tool.", tags: ["Mod", "Free"], rating: 4.7, hint: "ad blocker" },
             { name: "Poweramp Full Version", description: "Unlock all features of the powerful Poweramp music player for free.", tags: ["Mod", "Free"], rating: 4.9, hint: "modded music player" },
