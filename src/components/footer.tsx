@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import CobraLogo from "./cobra-logo";
 import Link from "next/link";
 import { Github, Twitter, Send } from "lucide-react";
+import Script from "next/script";
 
 const Footer = ({ className }: { className?: string }) => {
   const softwareLinks = [
@@ -80,6 +81,10 @@ const Footer = ({ className }: { className?: string }) => {
         </div>
       </div>
       <div className="container max-w-7xl mt-12 pt-8 border-t border-border/20">
+        <div className="mb-8">
+            <Script id="adsterra-native-banner" strategy="lazyOnload" async={true} data-cfasync="false" src="//pl27359699.profitableratecpm.com/fd33de6a2808f30bd0e63b9ee643a1a3/invoke.js"></Script>
+            <div id="container-fd33de6a2808f30bd0e63b9ee643a1a3"></div>
+        </div>
         <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg text-center">
             <h5 className="font-bold text-destructive">LEGAL DISCLAIMER</h5>
             <p className="max-w-4xl mx-auto text-xs text-muted-foreground/80 mt-2">
