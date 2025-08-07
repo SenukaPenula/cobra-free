@@ -16,7 +16,7 @@ const HeroSection = () => {
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
       <div className="container z-10 flex flex-col items-center justify-center gap-10 text-center py-20">
         <div className="flex flex-col items-center gap-4">
-          <h1 className="text-7xl font-bold tracking-tight text-primary sm:text-8xl md:text-9xl animate-pulse-glow">
+          <h1 className="text-7xl font-bold tracking-tight text-primary sm:text-8xl md:text-9xl animate-glitch">
             COBRA
           </h1>
           <p className="text-xl text-primary/80 font-mono">
@@ -27,12 +27,12 @@ const HeroSection = () => {
           </p>
         </div>
          <div className="flex flex-col sm:flex-row items-center gap-4">
-            <Button asChild size="lg" className="font-bold transition-all hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)]">
+            <Button asChild size="lg" className="font-bold transition-all hover:scale-105 hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)]">
                 <Link href="/mod-apks">
                     Explore Downloads <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="font-bold border-primary/50 text-primary hover:bg-primary/10 hover:text-primary">
+            <Button asChild size="lg" variant="outline" className="font-bold border-primary/50 text-primary hover:bg-primary/10 hover:text-primary transition-all hover:scale-105">
                 <Link href="/about">
                     Join Community
                 </Link>

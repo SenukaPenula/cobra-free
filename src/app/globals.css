@@ -114,7 +114,32 @@ h6 {
   .animate-pulse-glow {
     animation: pulse-glow 3s infinite ease-in-out;
   }
-
+  @keyframes glitch {
+    0% {
+      text-shadow: 0.05em 0 0 hsl(var(--primary) / 0.75), -0.05em 0 0 hsl(var(--accent) / 0.75);
+    }
+    15% {
+      text-shadow: 0.05em 0 0 hsl(var(--primary) / 0.75), -0.05em 0 0 hsl(var(--accent) / 0.75);
+    }
+    16% {
+      text-shadow: -0.05em -0.025em 0 hsl(var(--primary) / 0.75), 0.025em 0.025em 0 hsl(var(--accent) / 0.75);
+    }
+    49% {
+      text-shadow: -0.05em -0.025em 0 hsl(var(--primary) / 0.75), 0.025em 0.025em 0 hsl(var(--accent) / 0.75);
+    }
+    50% {
+      text-shadow: 0.025em 0.05em 0 hsl(var(--primary) / 0.75), 0.05em 0 0 hsl(var(--accent) / 0.75);
+    }
+    99% {
+       text-shadow: 0.025em 0.05em 0 hsl(var(--primary) / 0.75), 0.05em 0 0 hsl(var(--accent) / 0.75);
+    }
+    100% {
+      text-shadow: -0.025em 0 0 hsl(var(--primary) / 0.75), -0.025em -0.05em 0 hsl(var(--accent) / 0.75);
+    }
+  }
+  .animate-glitch {
+    animation: glitch 1s infinite linear alternate-reverse;
+  }
   .bg-grid {
     background-image: linear-gradient(to right, hsl(var(--primary) / 0.05) 1px, transparent 1px),
       linear-gradient(to bottom, hsl(var(--primary) / 0.05) 1px, transparent 1px);
