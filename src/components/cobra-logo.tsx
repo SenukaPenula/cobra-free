@@ -16,10 +16,10 @@ const CobraLogo = ({ className }: { className?: string }) => {
                 strokeLinejoin="round"
                 className="h-5 w-5"
             >
-                <path d="m7 11 4-4-4-4"></path>
-                <path d="M11 7H3"></path>
-                <path d="M21 13h-8"></path>
-                <path d="M17 17a2 2 0 1 0-4 0"></path>
+                <line x1="4" x2="20" y1="9" y2="9"></line>
+                <line x1="4" x2="20" y1="15" y2="15"></line>
+                <line x1="10" x2="8" y1="3" y2="21"></line>
+                <line x1="16" x2="14" y1="3" y2="21"></line>
             </svg>
         </div>
       <span className="hidden text-xl font-bold tracking-wider sm:inline-block">COBRA</span>
