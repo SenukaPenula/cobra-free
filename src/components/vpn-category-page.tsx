@@ -126,8 +126,8 @@ const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) =>
           </div>
         </motion.div>
 
-        <div className="mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-primary mb-6 flex items-center gap-3"><PlayCircle className="h-8 w-8"/>How to Use Free VPN Servers</h2>
+        <div className="mb-16 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold tracking-tight text-primary mb-6 flex items-center gap-3 justify-center"><PlayCircle className="h-8 w-8"/>How to Use Free VPN Servers</h2>
             <div className="aspect-video">
                 <iframe 
                     className="w-full h-full rounded-lg border-2 border-primary/30 shadow-lg shadow-primary/10"
