@@ -2,9 +2,9 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Copy, Search, CalendarClock, PlayCircle, DownloadCloud, Power, ShieldCheck } from "lucide-react";
+import { Copy, Search, CalendarClock, PlayCircle, DownloadCloud, Power, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { softwareList } from "@/lib/software-list";
@@ -27,30 +27,6 @@ interface VpnCategoryPageProps {
 }
 
 const ITEMS_PER_PAGE = 9;
-
-const VideoPlayer = () => {
-    const [hasMounted, setHasMounted] = useState(false);
-
-    useEffect(() => {
-        setHasMounted(true);
-    }, []);
-
-    if (!hasMounted) {
-        return <div className="w-full h-full rounded-lg bg-secondary/30 animate-pulse" />;
-    }
-
-    return (
-        <iframe 
-            className="w-full h-full rounded-lg border-2 border-primary/30 shadow-lg shadow-primary/10"
-            src="https://www.youtube.com/embed/Oz6bQnLMR7k" 
-            title="YouTube video player" 
-            frameBorder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerPolicy="strict-origin-when-cross-origin" 
-            allowFullScreen>
-        </iframe>
-    )
-}
 
 const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) => {
   const { toast } = useToast();
@@ -172,9 +148,19 @@ const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) =>
         <div className="mb-16">
             <h2 className="text-3xl font-bold tracking-tight text-primary mb-8 flex items-center gap-3 justify-center"><PlayCircle className="h-8 w-8"/>How to Get Started</h2>
             <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div className="aspect-video">
-                    <VideoPlayer />
-                </div>
+                <Card className="h-full bg-secondary/30 border border-border/50 rounded-lg p-6 flex flex-col justify-center items-center text-center transition-all duration-300 hover:border-primary/70 hover:bg-primary/5 hover:shadow-2xl hover:shadow-primary/10">
+                    <CardHeader>
+                        <CardTitle className="text-2xl text-primary">Video Tutorial</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-muted-foreground mb-6">Watch our step-by-step guide on how to set up the VPN client and connect to our servers.</p>
+                        <Button asChild size="lg" className="font-bold transition-all hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)]">
+                            <Link href="https://youtu.be/Oz6bQnLMR7k" target="_blank">
+                                Watch Guide <ArrowRight className="ml-2 h-5 w-5" />
+                            </Link>
+                        </Button>
+                    </CardContent>
+                </Card>
                 <div className="flex flex-col gap-6">
                     {quickStartSteps.map((step, index) => (
                         <div key={step.title} className="flex items-start gap-4">
