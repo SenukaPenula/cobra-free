@@ -4,7 +4,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Copy, Search, CalendarClock, PlayCircle } from "lucide-react";
+import { Copy, Search, CalendarClock, PlayCircle, DownloadCloud, Power, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { softwareList } from "@/lib/software-list";
@@ -19,6 +19,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "./ui/input";
 import { Badge } from "./ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 
 interface VpnCategoryPageProps {
   category: string;
@@ -31,6 +32,24 @@ const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) =>
   const { toast } = useToast();
   const [searchQuery, setSearchQuery] = useState("");
   const section = softwareList.find((s) => s.category === category);
+
+  const quickStartSteps = [
+    {
+      icon: <DownloadCloud className="h-6 w-6 text-primary" />,
+      title: "Install a Client",
+      description: "Download a compatible client for your OS (e.g., v2rayNG for Android, Nekoray for PC).",
+    },
+    {
+      icon: <Copy className="h-6 w-6 text-primary" />,
+      title: "Copy a Server Code",
+      description: "Browse our list and copy the configuration code for the server you want to use.",
+    },
+    {
+        icon: <Power className="h-6 w-6 text-primary" />,
+        title: "Import and Connect",
+        description: "In your client, import the code from your clipboard and tap to connect. You're all set!",
+    },
+  ];
 
   const handleCopyClick = (textToCopy: string, itemName: string) => {
     navigator.clipboard.writeText(textToCopy);
@@ -126,18 +145,33 @@ const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) =>
           </div>
         </motion.div>
 
-        <div className="mb-16 max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold tracking-tight text-primary mb-6 flex items-center gap-3 justify-center"><PlayCircle className="h-8 w-8"/>How to Use Free VPN Servers</h2>
-            <div className="aspect-video">
-                <iframe 
-                    className="w-full h-full rounded-lg border-2 border-primary/30 shadow-lg shadow-primary/10"
-                    src="https://www.youtube.com/embed/Oz6bQnLMR7k" 
-                    title="YouTube video player" 
-                    frameBorder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    referrerPolicy="strict-origin-when-cross-origin" 
-                    allowFullScreen>
-                </iframe>
+        <div className="mb-16">
+            <h2 className="text-3xl font-bold tracking-tight text-primary mb-8 flex items-center gap-3 justify-center"><PlayCircle className="h-8 w-8"/>How to Get Started</h2>
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div className="aspect-video">
+                    <iframe 
+                        className="w-full h-full rounded-lg border-2 border-primary/30 shadow-lg shadow-primary/10"
+                        src="https://www.youtube.com/embed/Oz6bQnLMR7k" 
+                        title="YouTube video player" 
+                        frameBorder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerPolicy="strict-origin-when-cross-origin" 
+                        allowFullScreen>
+                    </iframe>
+                </div>
+                <div className="flex flex-col gap-6">
+                    {quickStartSteps.map((step, index) => (
+                        <div key={step.title} className="flex items-start gap-4">
+                            <div className="p-3 rounded-full bg-primary/10 border border-primary/20 text-primary mt-1">
+                                {step.icon}
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-bold text-primary/90">{step.title}</h3>
+                                <p className="text-muted-foreground mt-1">{step.description}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
         
