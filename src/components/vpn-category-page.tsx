@@ -33,23 +33,6 @@ const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) =>
   const [searchQuery, setSearchQuery] = useState("");
   const section = softwareList.find((s) => s.category === category);
 
-  const quickStartSteps = [
-    {
-      icon: <DownloadCloud className="h-6 w-6 text-primary" />,
-      title: "Install a Client",
-      description: "Download Netmod for PC and Android.",
-    },
-    {
-      icon: <Copy className="h-6 w-6 text-primary" />,
-      title: "Copy a Server Code",
-      description: "Browse our list and copy the configuration code for the server you want to use.",
-    },
-    {
-        icon: <Power className="h-6 w-6 text-primary" />,
-        title: "Import and Connect",
-        description: "In your client, import the code from your clipboard and tap to connect. You're all set!",
-    },
-  ];
 
   const handleCopyClick = (textToCopy: string, itemName: string) => {
     navigator.clipboard.writeText(textToCopy);
@@ -133,49 +116,24 @@ const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) =>
           transition={{ duration: 0.5 }}
           className="text-left space-y-3 mb-12"
         >
-          <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
-            {section.category}
-          </h1>
-          <div className="flex items-center gap-4">
-            <p className="text-lg text-muted-foreground">Available packages for use</p>
-            <Badge variant="outline" className="border-accent/50 text-accent text-base py-1 px-3 flex items-center gap-2">
-                <CalendarClock className="h-4 w-4" />
-                Expires on: 2025-08-10
-            </Badge>
+            <div className="flex justify-between items-center">
+                <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
+                    {section.category}
+                </h1>
+                 <Button asChild className="rounded-full font-bold transition-all hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)]">
+                    <Link href="https://youtu.be/Oz6bQnLMR7k" target="_blank">
+                        <PlayCircle className="mr-2 h-5 w-5" /> Video Guide
+                    </Link>
+                </Button>
+            </div>
+            <div className="flex items-center gap-4">
+                <p className="text-lg text-muted-foreground">Available packages for use</p>
+                <Badge variant="outline" className="border-accent/50 text-accent text-base py-1 px-3 flex items-center gap-2">
+                    <CalendarClock className="h-4 w-4" />
+                    Expires on: 2025-08-10
+                </Badge>
           </div>
         </motion.div>
-
-        <div className="mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-primary mb-8 flex items-center gap-3 justify-center"><PlayCircle className="h-8 w-8"/>How to Get Started</h2>
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-                <Card className="h-full bg-secondary/30 border border-border/50 rounded-lg p-6 flex flex-col justify-center items-center text-center transition-all duration-300 hover:border-primary/70 hover:bg-primary/5 hover:shadow-2xl hover:shadow-primary/10">
-                    <CardHeader>
-                        <CardTitle className="text-2xl text-primary">Video Tutorial</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <p className="text-muted-foreground mb-6">Watch our step-by-step guide on how to set up the VPN client and connect to our servers.</p>
-                        <Button asChild size="lg" className="font-bold transition-all hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)]">
-                            <Link href="https://youtu.be/Oz6bQnLMR7k" target="_blank">
-                                Watch Guide <ArrowRight className="ml-2 h-5 w-5" />
-                            </Link>
-                        </Button>
-                    </CardContent>
-                </Card>
-                <div className="flex flex-col gap-6">
-                    {quickStartSteps.map((step, index) => (
-                        <div key={step.title} className="flex items-start gap-4">
-                            <div className="p-3 rounded-full bg-primary/10 border border-primary/20 text-primary mt-1">
-                                {step.icon}
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-bold text-primary/90">{step.title}</h3>
-                                <p className="text-muted-foreground mt-1">{step.description}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
         
         <div className="mb-12">
           <div className="relative">
