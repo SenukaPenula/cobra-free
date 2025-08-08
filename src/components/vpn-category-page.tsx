@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Copy, Search, CalendarClock, PlayCircle, DownloadCloud, Power, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
@@ -28,6 +28,30 @@ interface VpnCategoryPageProps {
 
 const ITEMS_PER_PAGE = 9;
 
+const VideoPlayer = () => {
+    const [hasMounted, setHasMounted] = useState(false);
+
+    useEffect(() => {
+        setHasMounted(true);
+    }, []);
+
+    if (!hasMounted) {
+        return <div className="w-full h-full rounded-lg bg-secondary/30 animate-pulse" />;
+    }
+
+    return (
+        <iframe 
+            className="w-full h-full rounded-lg border-2 border-primary/30 shadow-lg shadow-primary/10"
+            src="https://www.youtube.com/embed/Oz6bQnLMR7k" 
+            title="YouTube video player" 
+            frameBorder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerPolicy="strict-origin-when-cross-origin" 
+            allowFullScreen>
+        </iframe>
+    )
+}
+
 const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) => {
   const { toast } = useToast();
   const [searchQuery, setSearchQuery] = useState("");
@@ -37,7 +61,7 @@ const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) =>
     {
       icon: <DownloadCloud className="h-6 w-6 text-primary" />,
       title: "Install a Client",
-      description: "Download a compatible client for your OS (e.g., Netmod for PC and Android).",
+      description: "Download Netmod for PC and Android.",
     },
     {
       icon: <Copy className="h-6 w-6 text-primary" />,
@@ -149,15 +173,7 @@ const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) =>
             <h2 className="text-3xl font-bold tracking-tight text-primary mb-8 flex items-center gap-3 justify-center"><PlayCircle className="h-8 w-8"/>How to Get Started</h2>
             <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="aspect-video">
-                    <iframe 
-                        className="w-full h-full rounded-lg border-2 border-primary/30 shadow-lg shadow-primary/10"
-                        src="https://www.youtube.com/embed/Oz6bQnLMR7k" 
-                        title="YouTube video player" 
-                        frameBorder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        referrerPolicy="strict-origin-when-cross-origin" 
-                        allowFullScreen>
-                    </iframe>
+                    <VideoPlayer />
                 </div>
                 <div className="flex flex-col gap-6">
                     {quickStartSteps.map((step, index) => (
