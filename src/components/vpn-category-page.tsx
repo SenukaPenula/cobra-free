@@ -37,7 +37,7 @@ const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) =>
     {
       icon: <DownloadCloud className="h-6 w-6 text-primary" />,
       title: "Install a Client",
-      description: "Download a compatible client for your OS (e.g., v2rayNG for Android, Nekoray for PC).",
+      description: "Download a compatible client for your OS (e.g., Netmod for PC and Android).",
     },
     {
       icon: <Copy className="h-6 w-6 text-primary" />,
