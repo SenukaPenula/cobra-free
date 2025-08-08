@@ -4,7 +4,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Copy, Search, CalendarClock } from "lucide-react";
+import { Copy, Search, CalendarClock, PlayCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { softwareList } from "@/lib/software-list";
@@ -125,6 +125,21 @@ const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) =>
             </Badge>
           </div>
         </motion.div>
+
+        <div className="mb-16">
+            <h2 className="text-3xl font-bold tracking-tight text-primary mb-6 flex items-center gap-3"><PlayCircle className="h-8 w-8"/>How to Use Free VPN Servers</h2>
+            <div className="aspect-video">
+                <iframe 
+                    className="w-full h-full rounded-lg border-2 border-primary/30 shadow-lg shadow-primary/10"
+                    src="https://www.youtube.com/embed/Oz6bQnLMR7k" 
+                    title="YouTube video player" 
+                    frameBorder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerPolicy="strict-origin-when-cross-origin" 
+                    allowFullScreen>
+                </iframe>
+            </div>
+        </div>
         
         <div className="mb-12">
           <div className="relative">
