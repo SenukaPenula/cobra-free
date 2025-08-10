@@ -123,11 +123,11 @@ const VpnCategoryPage = ({ category, currentPage = 1 }: VpnCategoryPageProps) =>
                 <p className="text-lg text-muted-foreground">Available packages for use</p>
                 <Badge variant="outline" className="border-accent/50 text-accent text-base py-1 px-3 flex items-center gap-2">
                     <CalendarClock className="h-4 w-4" />
-                    Expires on: 2025-08-10
+                    Expires on: 2025-08-17
                 </Badge>
             </div>
             <div className="pt-4">
-                <Button asChild className="rounded-full font-bold transition-all hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)]">
+                <Button asChild size="sm" className="rounded-full font-bold transition-all hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)]">
                     <Link href="https://youtu.be/Oz6bQnLMR7k" target="_blank">
                         <PlayCircle className="mr-2 h-5 w-5" /> Video Guide
                     </Link>
